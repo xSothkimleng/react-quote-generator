@@ -4,7 +4,7 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/home.tsx';
 import Favorites from './pages/favorites.tsx';
-import Layout from './components/Layout/index.tsx';
+import Layout from './components/layout/index.tsx';
 import NotFound from './pages/notFound.tsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.ts';
