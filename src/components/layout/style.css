@@ -1,0 +1,18 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5vh auto 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .main-layout {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-layout {
+    width: 95%;
+  }
+}

@@ -3,7 +3,9 @@ import QuoteCard from '../components/QuoteCard';
 import { Quote, QuoteState } from '../types/quote';
 
 const FavoritesPage = () => {
-  const { favorites } = useSelector((state: QuoteState) => state);
+  const favorites = useSelector((state: QuoteState) => state.favorites);
+
+  console.log(favorites);
 
   return (
     <div>

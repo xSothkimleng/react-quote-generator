@@ -1,17 +1,22 @@
-import { ADD_TO_FAVORITES, QuoteActionTypes, REMOVE_FROM_FAVORITES } from '../types/ActionTypes';
+import { ADD_TO_FAVORITES, LOAD_RANDOM_QUOTES, QuoteActionTypes, REMOVE_FROM_FAVORITES } from '../types/ActionTypes';
 import { QuoteState } from '../types/quote';
 
-// Initial state
 const initialState: QuoteState = {
   favorites: [],
+  randomQuotes: [],
 };
 
-// Reducer function
 const quoteReducer = (state = initialState, action: QuoteActionTypes): QuoteState => {
   switch (action.type) {
+    case LOAD_RANDOM_QUOTES:
+      // replace randomQuotes
+      return {
+        ...state,
+        randomQuotes: action.payload,
+      };
     case ADD_TO_FAVORITES:
       {
-        // Check if quote already exists in favorites
+        // Check for duplication
         const exists = state.favorites.some(quote => quote.id === action.payload.id);
         if (exists) {
           return state;
@@ -22,6 +27,7 @@ const quoteReducer = (state = initialState, action: QuoteActionTypes): QuoteStat
         favorites: [...state.favorites, action.payload],
       };
     case REMOVE_FROM_FAVORITES:
+      // remove by id
       return {
         ...state,
         favorites: state.favorites.filter(quote => quote.id !== action.payload),

@@ -19,6 +19,7 @@ const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author, id, isFavorite = f
       id,
       quote,
       author,
+      isFavorite: true,
     };
     dispatch(addToFavorites(quoteObject) as unknown as AnyAction);
   };
