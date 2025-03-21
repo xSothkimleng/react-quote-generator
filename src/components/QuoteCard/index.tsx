@@ -1,11 +1,32 @@
+import { useDispatch } from 'react-redux';
 import Button from '../Button';
+import { Quote } from '../../types/quote';
+import { addToFavorites, removeFromFavorites } from '../../redux/actions';
+import { AnyAction } from 'redux';
 
 interface QuoteCardProps {
   quote: string;
   author: string;
+  id: number;
+  isFavorite?: boolean;
 }
 
-const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author }) => {
+const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author, id, isFavorite = false }) => {
+  const dispatch = useDispatch();
+
+  const handleSaveQuote = () => {
+    const quoteObject: Quote = {
+      id,
+      quote,
+      author,
+    };
+    dispatch(addToFavorites(quoteObject) as unknown as AnyAction);
+  };
+
+  const handleDeleteQuote = () => {
+    dispatch(removeFromFavorites(id) as unknown as AnyAction);
+  };
+
   return (
     <div
       style={{
@@ -21,7 +42,11 @@ const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author }) => {
         <p style={{ fontSize: '16px', color: 'gray' }}>by {author}</p>
       </div>
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-        <Button text='Delete Quote' />
+        {isFavorite ? (
+          <Button text='Delete Quote' onClick={handleDeleteQuote} />
+        ) : (
+          <Button text='Save Quote' onClick={handleSaveQuote} />
+        )}
       </div>
     </div>
   );

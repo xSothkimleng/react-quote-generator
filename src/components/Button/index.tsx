@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 interface ButtonProps {
   text: string;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ text }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonStyle = {
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({ text }) => {
   return (
     <button
       style={buttonStyle}
+      onClick={onClick}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
