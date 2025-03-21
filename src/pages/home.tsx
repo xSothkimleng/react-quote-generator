@@ -5,6 +5,7 @@ import { QuoteState } from '../types/quote';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadRandomQuotes } from '../redux/actions';
 import { AnyAction } from 'redux';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,12 @@ const HomePage = () => {
       <div style={{ margin: '1rem 0' }}>
         <Button onClick={() => handleGenerateQuote()} text='Generate Quote' />
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <LoadingSpinner />
+        </div>
+      )}
+
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       {quotes &&
         quotes.length > 0 &&
