@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 
 interface ButtonProps {
   text: string;
+  isDelete?: boolean;
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, isDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonStyle = {
@@ -16,7 +17,8 @@ const Button: React.FC<ButtonProps> = ({ text, onClick }) => {
     display: 'flex',
     alignItems: 'center',
     background: 'none',
-    border: '1px solid lightgray',
+    color: isDelete ? '#AA0000' : 'inherit',
+    border: isDelete ? '1px solid #AA0000' : '1px solid lightgray',
     transform: isHovered ? 'scale(1.05)' : 'scale(1)',
     boxShadow: isHovered ? '0 4px 8px rgba(0, 0, 0, 0.2)' : 'none',
     transition: 'all 0.1s ease',

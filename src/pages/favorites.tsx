@@ -5,8 +5,6 @@ import { Quote, QuoteState } from '../types/quote';
 const FavoritesPage = () => {
   const favorites = useSelector((state: QuoteState) => state.favorites);
 
-  console.log(favorites);
-
   return (
     <div>
       <p style={{ margin: '1rem 0' }}>Saved Favorites</p>

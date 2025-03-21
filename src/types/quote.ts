@@ -7,5 +7,5 @@ export interface Quote {
 
 export interface QuoteState {
   favorites: Quote[];
-  randomQuotes: Quote[];
+  currentQuotes: Quote[];
 }

@@ -8,9 +8,7 @@ import { AnyAction } from 'redux';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const quotes = useSelector((state: QuoteState) => state.randomQuotes);
-
-  console.log(quotes);
+  const quotes = useSelector((state: QuoteState) => state.currentQuotes);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

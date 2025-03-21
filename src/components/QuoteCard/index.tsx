@@ -37,6 +37,7 @@ const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author, id, isFavorite = f
         alignItems: 'center',
         gap: '0.5rem',
         padding: '1rem',
+        color: isFavorite ? 'green' : 'inherit',
       }}>
       <div style={{ flex: 4 }}>
         <p style={{ fontSize: '20px' }}>&quot;{quote}&quot;</p>
@@ -44,7 +45,7 @@ const QuoteCard: React.FC<QuoteCardProps> = ({ quote, author, id, isFavorite = f
       </div>
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
         {isFavorite ? (
-          <Button text='Delete Quote' onClick={handleDeleteQuote} />
+          <Button text='Delete Quote' onClick={handleDeleteQuote} isDelete={isFavorite} />
         ) : (
           <Button text='Save Quote' onClick={handleSaveQuote} />
         )}
